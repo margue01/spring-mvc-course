@@ -30,15 +30,11 @@ public class DemoController {
     // http://localhost:8080/todo-list/welcome
     @GetMapping("welcome")
     public String welcome(Model model) {
+        model.addAttribute("helloMessage", demoService.getHelloMessage("Tim"));
+        log.info("model = {}", model);
         // prefix + name + suffix
         // /WEB-INF/view/welcome.jsp
         return "welcome";
-    }
-
-    @ModelAttribute("helloMessage")
-    public String helloMessage() {
-        log.info("helloMessage() called");
-        return demoService.getHelloMessage("Tim");
     }
 
     @ModelAttribute("welcomeMessage")
